@@ -7,6 +7,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AddTask from "./components/AddTask";
 import EmptyTask from "./components/EmptyTask";
+import Footer from "./components/Footer";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import AboutDeveloper from "./components/About-Developer";
 
 function App() {
     const [tasks, setTasks] = useState([])
@@ -62,8 +65,9 @@ function App() {
                 body: JSON.stringify(updateTask)
             })
         const data = await response.json()
+        console.log(data.reminder);
 
-        setTasks(tasks.map(task => task.id === id ? {...task, reminder: !data.reminder} : task))
+        setTasks(tasks.map(task => task.id === id ? {...task, reminder: !task.reminder} : task))
     }
 
     async function deleteTask(id)  {
@@ -72,30 +76,46 @@ function App() {
     }
 
     return (
-        <>
-            <Container fluid>
-                <Row>
-                    <Col>
-                        <div className="App">
-                            <Header onToggleTaskForm={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask} title='Task Manager'/>
-                        </div>
-                    </Col>
-                </Row>
+        <Router>
 
-                <Row>
-                    <Col style={{marginTop: '40px'}} lg={{ span: 4, offset: 4 }}>
-                        {showAddTask && <AddTask onAddTask={addTask}/>}
-                        {/*Shortcut way of doing ternary operation without adding else*/}
-                    </Col>
-                </Row>
+                <Container fluid>
+                    <Row>
+                        <Col>
+                            <div className="App">
+                                <Header onToggleTaskForm={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask} title='Task Manager'/>
+                            </div>
+                        </Col>
+                    </Row>
 
-                <Row>
-                    <Col>
-                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : <EmptyTask/>}
-                    </Col>
-                </Row>
-            </Container>
-        </>
+
+
+                    <Row>
+                        <Col>
+                            <Routes>
+                                <Route path='/' exact element={
+                                    <>
+                                        <Row>
+                                            <Col style={{marginTop: '40px'}} lg={{ span: 4, offset: 4 }}>
+                                                {showAddTask && <AddTask onAddTask={addTask}/>}
+                                                {/*Shortcut way of doing ternary operation without adding else*/}
+                                            </Col>
+                                        </Row>
+
+                                        <Row>
+                                            <Col>
+                                                { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : <EmptyTask/>}
+                                            </Col>
+                                        </Row>
+                                    </>
+                                } />
+                                <Route path='/about'  element={<AboutDeveloper/>} />
+                            </Routes>
+
+                            <Footer/>
+                        </Col>
+                    </Row>
+                </Container>
+        </Router>
     );
 }
 
