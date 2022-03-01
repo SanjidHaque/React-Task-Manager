@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 const AddTask = ({ onAddTask }) => {
     const [text, setText] = useState('')
-    const [reminder, setReminder] = useState(false)
+    const [reminder] = useState(false)
 
     function onSubmit(e) {
         e.preventDefault()

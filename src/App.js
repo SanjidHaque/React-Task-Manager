@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AddTask from "./components/AddTask";
+import EmptyTask from "./components/EmptyTask";
 
 function App() {
     const [tasks, setTasks] = useState([])
@@ -90,7 +91,7 @@ function App() {
 
                 <Row>
                     <Col>
-                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : <Header/>}
+                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : <EmptyTask/>}
                     </Col>
                 </Row>
             </Container>
