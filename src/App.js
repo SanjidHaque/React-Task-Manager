@@ -5,6 +5,7 @@ import Tasks from "./components/Tasks";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import AddTask from "./components/AddTask";
 
 function App() {
     const [tasks, setTasks] = useState([
@@ -27,6 +28,11 @@ function App() {
             reminder: true
         }
     ])
+    function addTask(task) {
+        const id = Math.floor(Math.random() * 1000) + 1
+        const newTask = { id, ...task }
+        setTasks([...tasks, newTask])
+    }
 
     function toggleTask(id) {
         setTasks(tasks.map(task => task.id === id ? {...task, reminder: !task.reminder} : task))
@@ -48,8 +54,14 @@ function App() {
                 </Row>
 
                 <Row>
+                    <Col style={{marginTop: '40px'}} lg={{ span: 4, offset: 4 }}>
+                        <AddTask onAddTask={addTask} />
+                    </Col>
+                </Row>
+
+                <Row>
                     <Col>
-                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : 'No task to show!'}
+                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : <Header/>}
                     </Col>
                 </Row>
             </Container>
