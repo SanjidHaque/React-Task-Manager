@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 
 const AddTask = ({ onAddTask }) => {
     const [text, setText] = useState('')
+    const [reminder, setReminder] = useState(false)
 
     function onSubmit(e) {
         e.preventDefault()
@@ -14,7 +15,7 @@ const AddTask = ({ onAddTask }) => {
             alert('Task cannot be empty')
             return
         }
-        onAddTask({text})
+        onAddTask({text, reminder})
         setText('')
     }
 

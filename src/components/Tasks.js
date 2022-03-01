@@ -7,7 +7,7 @@ const Tasks = ({tasks, onDeleteTask, onToggleTask}) => {
         <>
             <Row style={{ paddingTop: "20px"}}>
                 <Col lg={{ span: 4, offset: 4 }}>
-                    { tasks.map(task => ( <Task key={task.id} task={task} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} /> ))}
+                    { tasks.map((task, index) => ( <Task key={index} task={task} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} /> ))}
                 </Col>
             </Row>
         </>
