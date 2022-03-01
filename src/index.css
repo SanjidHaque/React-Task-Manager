@@ -28,6 +28,7 @@ code {
   text-align: center;
   border: 1px solid grey;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .toggle-task {

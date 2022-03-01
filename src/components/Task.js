@@ -18,12 +18,5 @@ const Task = ({task, onDeleteTask, onToggleTask}) => {
     );
 };
 
-const task = {
-    padding: '20px 2px',
-    margin: '20px 2px',
-    textAlign: 'center',
-    border: '1px solid grey',
-    borderRadius: '5px'
-}
 
 export default Task;
