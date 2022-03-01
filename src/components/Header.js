@@ -3,10 +3,7 @@ import Button from "./Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const Header = ({title}) => {
-    const onClick = () => {
-        console.log('Button clicked');
-    }
+const Header = ({title, onToggleTaskForm}) => {
     return (
         <>
             <Row style={{paddingTop:'20px'}}>
@@ -16,7 +13,7 @@ const Header = ({title}) => {
             </Row>
             <Row>
                 <Col lg={{ span: 4, offset: 4}} style={{paddingTop:'10px'}}>
-                    <Button backgroundColor='#5984b6' text='Add' onClick={onClick}/>
+                    <Button backgroundColor='#5984b6' text='Add' onClick={onToggleTaskForm}/>
                 </Col>
             </Row>
         </>

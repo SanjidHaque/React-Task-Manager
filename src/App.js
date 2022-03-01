@@ -28,6 +28,9 @@ function App() {
             reminder: true
         }
     ])
+
+    const [showAddTask, setShowAddTask] = useState(false)
+
     function addTask(task) {
         const id = Math.floor(Math.random() * 1000) + 1
         const newTask = { id, ...task }
@@ -48,14 +51,15 @@ function App() {
                 <Row>
                     <Col>
                         <div className="App">
-                            <Header title='Task Manager'/>
+                            <Header onToggleTaskForm={() => setShowAddTask(!showAddTask)} title='Task Manager'/>
                         </div>
                     </Col>
                 </Row>
 
                 <Row>
                     <Col style={{marginTop: '40px'}} lg={{ span: 4, offset: 4 }}>
-                        <AddTask onAddTask={addTask} />
+                        {showAddTask && <AddTask onAddTask={addTask} />}
+                        {/*Shortcut way of doing ternary operation without adding else*/}
                     </Col>
                 </Row>
 
