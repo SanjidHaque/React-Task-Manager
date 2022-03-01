@@ -1,17 +1,17 @@
 import React from 'react';
-import Button from "react-bootstrap/Button";
+import {CloseButton} from "react-bootstrap"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 const Task = ({task, onDeleteTask, onToggleTask}) => {
     return (
         <>
-            <Row onDoubleClick={() => onToggleTask(task.id)} className={`task ${ task.reminder ? 'toggle-task' : '' }`}>
-                <Col lg={{ span: 4 }} style={{ textAlign: "left" }}>
-                    {task.text}
+            <Row title='Double click to mark as done' onDoubleClick={() => onToggleTask(task.id)} className={`task ${ task.reminder ? 'toggle-task' : '' }`}>
+                <Col lg={{ span: 8 }} style={{ textAlign: "left" }}>
+                   <h6> {task.text} </h6>
                 </Col>
-                <Col lg={{ span: 4, offset: 4 }} style={{ textAlign: "right" }}>
-                    <Button onClick={() => onDeleteTask(task.id)} variant="danger" size='sm' > Remove </Button>
+                <Col lg={{ span: 4}} style={{ textAlign: "right" }}>
+                    <CloseButton onClick={() => onDeleteTask(task.id)} />
                 </Col>
             </Row>
         </>

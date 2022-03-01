@@ -1,9 +1,14 @@
 {
   "tasks": [
     {
-      "text": "w",
+      "text": "Take a nap",
       "reminder": false,
       "id": 1
+    },
+    {
+      "text": "Take another nap",
+      "reminder": false,
+      "id": 2
     }
   ]
 }
