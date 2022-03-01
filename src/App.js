@@ -10,35 +10,27 @@ function App() {
     const [tasks, setTasks] = useState([
         {
             id: 1,
-            text: "Email Johan",
+            text: "Fill gas from Clean Fuel",
             dateTime: "12/12/21",
             reminder: true
         },
         {
             id: 2,
-            text: "Email Johan",
+            text: "Email HR to post a vacancy",
             dateTime: "12/12/21",
             reminder: false
         },
         {
             id: 3,
-            text: "Email Johan",
-            dateTime: "12/12/21",
-            reminder: true
-        },
-        {
-            id: 4,
-            text: "Email Johan",
-            dateTime: "12/12/21",
-            reminder: false
-        },
-        {
-            id: 5,
-            text: "Email Johan",
+            text: "Feed the mocking birds",
             dateTime: "12/12/21",
             reminder: true
         }
     ])
+
+    function toggleTask(id) {
+        setTasks(tasks.map(task => task.id === id ? {...task, reminder: !task.reminder} : task))
+    }
 
     function deleteTask(id)  {
         setTasks(tasks.filter(task => task.id !== id))
@@ -57,7 +49,7 @@ function App() {
 
                 <Row>
                     <Col>
-                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask}/>) : 'No task to show!'}
+                        { tasks.length > 0 ? (<Tasks tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask}/>) : 'No task to show!'}
                     </Col>
                 </Row>
             </Container>

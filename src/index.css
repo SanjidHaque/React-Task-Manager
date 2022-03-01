@@ -21,3 +21,15 @@ code {
   cursor: pointer;
   transition: 3;
 }
+
+.task {
+  padding: 20px 2px;
+  margin: 20px 2px;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.toggle-task {
+  border-left: 7px solid #1fdd1f
+}
